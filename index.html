@@ -3,22 +3,39 @@
   <head>
     <title>Stacktrace Filter</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    <style>
+      #stackTraceInput {
+        width: calc(100% - 30px);
+        margin: 10px 15px;
+      }
+      #filteredOutput {
+        font-size: 12px;
+        color: gray;
+        margin-top: 5px;
+      }
+    </style>
   </head>
   <body>
     <div class="container mt-5">
       <div class="row">
-        <div class="col-md-6 offset-md-3">
-          <textarea id="myTextArea" class="form-control" rows="10"></textarea>
-          <button id="myButton" class="btn btn-primary mt-3">Log Text</button>
+        <div class="col-md-6 offset-md-3 text-center">
+          <textarea id="stackTraceInput" class="form-control" rows="20" placeholder="Enter stacktrace here..."></textarea>
+          <button id="filterButton" class="btn btn-primary mt-3">Filter Stacktrace</button>
+          <div id="filteredOutput"></div>
         </div>
       </div>
     </div>
     <script>
-      const myTextArea = document.getElementById('myTextArea');
-      const myButton = document.getElementById('myButton');
+      const stackTraceInput = document.getElementById('stackTraceInput');
+      const filterButton = document.getElementById('filterButton');
+      const filteredOutput = document.getElementById('filteredOutput');
+      const exclusions = ['from lib/', 'from vendor/', 'from bin/', 'from packages/management_tools/'];
 
-      myButton.addEventListener('click', () => {
-        console.log(myTextArea.value);
+      filterButton.addEventListener('click', () => {
+        const lines = stackTraceInput.value.split('\n');
+        const filteredLines = lines.filter(line => !exclusions.some(exclusion => line.includes(exclusion)));
+        const filteredText = filteredLines.join('\n');
+        filteredOutput.innerText = filteredText;
       });
     </script>
   </body>
