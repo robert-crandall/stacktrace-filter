@@ -12,22 +12,18 @@
         padding: 20px 0;
         text-align: center;
       }
-      #stackTraceInput {
-        width: calc(100% - 30px);
+      .textbox {
+        width: calc(100% - 50px);
         margin: 10px 15px;
-        color: grey;
         font-size: 14px;
         padding: 10px;
         border: 1px solid #d1d5da;
         border-radius: 3px;
       }
+      #stackTraceInput {
+        color: grey;
+      }
       #filteredOutput {
-        width: calc(100% - 30px);
-        margin: 10px 15px;
-        font-size: 14px;
-        padding: 10px;
-        border: 1px solid #d1d5da;
-        border-radius: 3px;
         background-color: white;
       }
       .btn-github {
@@ -54,12 +50,12 @@
     <div class="container mt-5">
       <div class="row">
         <div class="col-md-6 offset-md-3 mx-auto">
-          <textarea id="stackTraceInput" class="form-control" rows="20" placeholder="Enter stacktrace here..."></textarea>
+          <textarea id="stackTraceInput" class="form-control textbox" rows="20" placeholder="Enter stacktrace here..."></textarea>
           <div class="text-center">
             <button id="filterButton" class="btn btn-secondary btn-github mt-3">Filter Stacktrace</button>
           </div>
 
-          <div id="filteredOutput"></div>
+          <div id="filteredOutput" class="textbox"></div>
 
           <div class="text-center">
             <button id="copyButton" class="btn btn-secondary btn-github mt-3">Copy to Clipboard</button>
