@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stacktrace Filter</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <textarea id="myTextArea" class="form-control" rows="10"></textarea>
+          <button id="myButton" class="btn btn-primary mt-3">Log Text</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      const myTextArea = document.getElementById('myTextArea');
+      const myButton = document.getElementById('myButton');
+
+      myButton.addEventListener('click', () => {
+        console.log(myTextArea.value);
+      });
+    </script>
+  </body>
+</html>
